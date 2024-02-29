@@ -1,3 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+:root {
+  --background-light: #FFFFFF;
+  --background-block-light: #FFFFFF;
+  --background-dark: #18191D;
+  --background-block-dark: #282E33;
+  --text-dark: #FFFFFF;
+  --text-light: #000000;
+}
+
+* {
+  margin: 0;
+}
+* h2 {
+  font-family: "Rubik", sans-serif !important;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+}
+* h3 {
+  font-family: "Rubik", sans-serif !important;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.58;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9,6 +36,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: var(--background-block-light);
 }
 header .header {
   width: 100%;
@@ -25,7 +53,7 @@ header .header {
           justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
-  min-height: 60px;
+  min-height: 66px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -34,7 +62,7 @@ header .header form {
   width: 100%;
   max-width: 500px;
   min-height: 50px;
-  border: 1px solid black;
+  border: 2px solid #FA9043;
   border-radius: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -51,9 +79,7 @@ header .header form {
           justify-content: space-between;
   padding-left: 10px;
   padding-right: 20px;
-}
-header .header form label {
-  cursor: pointer;
+  background: none;
 }
 header .header input::-webkit-input-placeholder {
   font-size: 18px;
@@ -77,8 +103,11 @@ header .header input:active {
   border: none;
 }
 header button {
-  height: 40px;
+  height: 60px;
+  width: 60px;
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 #findFilm {
@@ -89,9 +118,15 @@ header button {
   height: 100%;
   min-height: 40px;
   font-size: 18px;
+  background: none !important;
+  color: var(--text-light);
 }
 
 #submitFilm {
   cursor: pointer;
   height: 40px;
+  border: none;
+  font-size: 18px;
+  color: #FA9043;
+  background: none;
 }

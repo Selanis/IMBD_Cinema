@@ -13,12 +13,13 @@ class Data extends Component {
     }
 
     componentDidMount = () => {
+
         fetch(`https://api.kinopoisk.dev/v1.4/movie`, {
                 method: 'GET',
                 headers: {
                     accept: 'application/json', 
                     'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
-                    limit: 100
+                    // limit: 100
                 },
                 
             })
@@ -36,10 +37,32 @@ class Data extends Component {
                 
             })
             
-    }
 
-    showAllCards = () => {
+            $.ajax({
+                url: '../../public/index.html',
+                method: 'GET',
+                data: {dataFilms: this.state.items},
+                dataType: 'html',
+                timeout: 2000,
+                success: function (data) {
+                    data = ``
+                    // for (let id = 0; id < 10; id++) {
+                    //     data += `
+                    //     <div className='card' style={{background: 'url("linear.svg") center/cover no-repeat, url("${this.state.items[0].docs[id].poster.previewUrl}") center/cover no-repeat'}}>
+                    //         <div className="card__text">
+                    //             <h2></h2>
+                    //             <h3></h3>
+                    //         </div>
+                    //     </div>
+                    //     `
+                    // }
 
+                    // console.log(this.state.items)
+
+                    $('.data-container__all-films').html(data)
+                }
+            })
+    
     }
 
     render() {

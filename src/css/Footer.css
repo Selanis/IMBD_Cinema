@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+:root {
+  --background-light: #FFFFFF;
+  --background-block-light: #FFFFFF;
+  --background-dark: #18191D;
+  --background-block-dark: #282E33;
+  --text-dark: #FFFFFF;
+  --text-light: #000000;
+}
+
+* {
+  margin: 0;
+}
+* h2 {
+  font-family: "Rubik", sans-serif !important;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+}
+* h3 {
+  font-family: "Rubik", sans-serif !important;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.58;
+}
+
+footer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: var(--background-block-light);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+footer .footer-container {
+  max-width: 1300px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+footer .footer-container h2 {
+  color: var(--text-light);
+}
+footer .footer-container h3 {
+  color: var(--text-light);
+}

@@ -5,29 +5,74 @@ import $ from 'jquery';
 
 class Header extends Component {
     state = {
-        theme: localStorage.getItem('theme')
+        theme: localStorage.getItem('theme'),
+        themeLogo: `${localStorage.getItem('theme')}.svg`,
+        mainLogoTheme: `main-logo-${localStorage.getItem('theme')}.svg`
     }
 
+    componentDidMount = async () => {
+        $('header').css({
+            'background-color': `var(--background-block-${this.state.theme})`
+        })
+        $('body').css({
+            'background-color': `var(--background-${this.state.theme})`
+        })
+        $('#findFilm').css({
+            'color': `var(--text-${this.state.theme})`
+        })
+        $('footer').css({
+            'background-color': `var(--background-block-${this.state.theme})`
+        })
 
+        $('.footer-container h2').css({
+            'color': `var(--text-${this.state.theme})`
+        })
+        $('.footer-container h3').css({
+            'color': `var(--text-${this.state.theme})`
+        })
+        
+    }
 
-    themeModeClick = () => {
+    themeModeClick = async () => {
         switch (this.state.theme) {
             case "light":
-                this.setState({theme: "dark"})
                 localStorage.setItem('theme', "dark")
                 break
             case "dark":
-                this.setState({theme: "light"})
                 localStorage.setItem('theme', "light")
                 break
         }
+
+        await this.setState({theme: localStorage.getItem('theme'), themeLogo: `${localStorage.getItem('theme')}.svg`, mainLogoTheme: `main-logo-${localStorage.getItem('theme')}.svg`})
+
+        
+        $('body').css({
+            'background-color': `var(--background-${this.state.theme})`
+        })
+        $('#findFilm').css({
+            'color': `var(--text-${this.state.theme})`
+        })
+        $('header').css({
+            'background-color': `var(--background-block-${this.state.theme})`
+        })
+        $('footer').css({
+            'background-color': `var(--background-block-${this.state.theme})`
+        })
+
+        $('.footer-container h2').css({
+            'color': `var(--text-${this.state.theme})`
+        })
+        $('.footer-container h3').css({
+            'color': `var(--text-${this.state.theme})`
+        })
     }
     
     render() {
+
         return(
             <header>
                 <div className="header">
-                    <img src="main-logo.svg" />
+                    <img src={this.state.mainLogoTheme} />
 
                     <form>
                         <input type="text" name="find" id="findFilm" placeholder='Поиск' />
@@ -37,7 +82,9 @@ class Header extends Component {
                         </label> */}
                     </form>
 
-                    <button onClick={this.themeModeClick}>{this.state.theme} Theme</button>
+                    <button onClick={this.themeModeClick}>
+                        <img src={this.state.themeLogo} />
+                    </button>
                 </div>
                 
             </header>

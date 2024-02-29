@@ -1,8 +1,11 @@
+@import 'styles.scss';
+
 header {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
+    background-color: var(--background-block-light);
     .header {
         width: 100%;
         max-width: 1300px;
@@ -11,14 +14,14 @@ header {
         justify-content: space-between;
         padding-left: 30px;
         padding-right: 30px;
-        min-height: 60px;
+        min-height: 66px;
         align-items: center;
     
         form {
             width: 100%;
             max-width: 500px;
             min-height: 50px;
-            border: 1px solid black;
+            border: 2px solid $orange;
             border-radius: 12px;
             display: flex;
             flex-direction: row;
@@ -26,10 +29,7 @@ header {
             justify-content: space-between;
             padding-left: 10px;
             padding-right: 20px;
-    
-            label {
-                cursor: pointer;
-            }
+            background: none;
         }
     
         input::placeholder {
@@ -46,8 +46,11 @@ header {
     }
 
     button {
-        height: 40px;
+        height: 60px;
+        width: 60px;
         cursor: pointer;
+        border: none;
+        background: none;
     }
 }
 
@@ -60,10 +63,16 @@ header {
     height: 100%;
     min-height: 40px;
     font-size: 18px;
+    background: none !important;
+    color: var(--text-light);
 }
 
 #submitFilm {
     // display: none;
     cursor: pointer;
     height: 40px;
+    border: none;
+    font-size: 18px;
+    color: $orange;
+    background: none;
 }

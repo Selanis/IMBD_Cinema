@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+:root {
+  --background-light: #FFFFFF;
+  --background-block-light: #FFFFFF;
+  --background-dark: #18191D;
+  --background-block-dark: #282E33;
+  --text-dark: #FFFFFF;
+  --text-light: #000000;
+}
+
 * {
   margin: 0;
 }

@@ -1,3 +1,12 @@
+/* @import url('components/css/styles.scss'); */
+
+:root {
+  --background-light: #FFFFFF;
+  --background-block-light: #FFFFFF;
+  --background-dark: #18191D;
+  --background-block-dark: #282E33;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,10 +15,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
-  min-height: 100vh;
+  background-color: var(--background-light);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  height: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;      
+  cursor: pointer;
+}
+
+
+body::-webkit-scrollbar-thumb {
+  background-color: #FA9043;    /* цвет бегунка */
+  border-radius: 20px;
+  cursor: pointer;
 }
