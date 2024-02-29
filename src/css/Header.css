@@ -1,0 +1,97 @@
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+header .header {
+  width: 100%;
+  max-width: 1300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  min-height: 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header .header form {
+  width: 100%;
+  max-width: 500px;
+  min-height: 50px;
+  border: 1px solid black;
+  border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+header .header form label {
+  cursor: pointer;
+}
+header .header input::-webkit-input-placeholder {
+  font-size: 18px;
+}
+header .header input::-moz-placeholder {
+  font-size: 18px;
+}
+header .header input:-ms-input-placeholder {
+  font-size: 18px;
+}
+header .header input::-ms-input-placeholder {
+  font-size: 18px;
+}
+header .header input::placeholder {
+  font-size: 18px;
+}
+header .header input:focus {
+  border: none !important;
+}
+header .header input:active {
+  border: none;
+}
+header button {
+  height: 40px;
+  cursor: pointer;
+}
+
+#findFilm {
+  width: 100%;
+  max-width: 400px;
+  padding-left: 10px;
+  border: none;
+  height: 100%;
+  min-height: 40px;
+  font-size: 18px;
+}
+
+#submitFilm {
+  cursor: pointer;
+  height: 40px;
+}

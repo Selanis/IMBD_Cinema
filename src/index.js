@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Header from './components/Header';
+import Data from './components/Data';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const theme = localStorage.getItem('theme')
+  if (theme == null) {
+    localStorage.setItem('theme', 'light')
+  }
+  
+})
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <Data />
   </React.StrictMode>
 );
 
