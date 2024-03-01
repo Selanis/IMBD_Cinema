@@ -2,6 +2,8 @@ import './styles.scss';
 import './Data.scss';
 import React, { Component} from 'react'
 import $ from 'jquery';
+import {Movies} from './Movies'
+
 
 class Data extends Component {
     state = {
@@ -12,14 +14,13 @@ class Data extends Component {
         id: 666
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
 
-        fetch(`https://api.kinopoisk.dev/v1.4/movie`, {
+        await fetch(`https://api.kinopoisk.dev/v1.4/movie`, {
                 method: 'GET',
                 headers: {
                     accept: 'application/json', 
-                    'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
-                    // limit: 100
+                    // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
                 },
                 
             })
@@ -38,30 +39,29 @@ class Data extends Component {
             })
             
 
-            $.ajax({
-                url: '../../public/index.html',
-                method: 'GET',
-                data: {dataFilms: this.state.items},
-                dataType: 'html',
-                timeout: 2000,
-                success: function (data) {
-                    data = ``
-                    // for (let id = 0; id < 10; id++) {
-                    //     data += `
-                    //     <div className='card' style={{background: 'url("linear.svg") center/cover no-repeat, url("${this.state.items[0].docs[id].poster.previewUrl}") center/cover no-repeat'}}>
-                    //         <div className="card__text">
-                    //             <h2></h2>
-                    //             <h3></h3>
-                    //         </div>
-                    //     </div>
-                    //     `
-                    // }
+            // $.ajax({
+            //     url: '../../public/index.html',
+            //     method: 'POST',
+            //     data: this.state.items[0],
+            //     success: function (data) {
+            //         console.log(data)
+            //         // data = ``
+            //         // for (let id = 0; id < 10; id++) {
+            //         //     data += `
+            //         //     <div className='card' style={{background: 'url("linear.svg") center/cover no-repeat, url("${dataFilms.docs[id].poster.previewUrl}") center/cover no-repeat'}}>
+            //         //         <div className="card__text">
+            //         //             <h2></h2>
+            //         //             <h3></h3>
+            //         //         </div>
+            //         //     </div>
+            //         //     `
+            //         // }
 
-                    // console.log(this.state.items)
+            //         // console.log(this.state.items)
 
-                    $('.data-container__all-films').html(data)
-                }
-            })
+            //         // $('.data-container__all-films').html(data)
+            //     }
+            // })
     
     }
 
@@ -75,12 +75,14 @@ class Data extends Component {
                 </div>
 
                 <div className='data-container__all-films'>
-                    <div className='card' style={{background: 'url("linear.svg") center/cover no-repeat, url("https://image.openmoviedb.com/kinopoisk-images/9784475/0d357941-77df-4aa2-b1b0-0f608887a2b9/x1000") center/cover no-repeat'}}>
-                        <div className="card__text">
-                            <h2></h2>
-                            <h3></h3>
+                    {
+                        this.state.items.lenght == 1 ? (
+                            <Movies items={this.state.items} />
+                        ) : <div className="preloader">
+                            <img className="preloader__logo" id="preloader" src="preloader.svg" />
                         </div>
-                    </div>
+                        
+                    }
                     
                 </div>
                 
