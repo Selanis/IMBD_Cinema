@@ -110,6 +110,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 40px;
+  color: #FA9043;
+  font-size: 30px;
 }
 
 @-webkit-keyframes preloader {

@@ -46,7 +46,8 @@ class Data extends Component {
             method: 'GET',
             headers: {
                 accept: 'application/json', 
-                'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+                // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+                'X-API-KEY': '20K3GT5-C6ZMQ4Y-M2NJKF4-ZFZK0FK',
                 
             },
             beforeSend: function(xhr){
@@ -109,7 +110,8 @@ class Data extends Component {
             method: 'GET',
             headers: {
                 accept: 'application/json', 
-                'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+                // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+                'X-API-KEY': '20K3GT5-C6ZMQ4Y-M2NJKF4-ZFZK0FK',
             },
             beforeSend: function(xhr){
                 let newContent = ``
@@ -142,7 +144,6 @@ class Data extends Component {
             }
         })
     }
-    
 
     render() {
         return(
