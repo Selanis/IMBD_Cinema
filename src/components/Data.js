@@ -16,74 +16,99 @@ class Data extends Component {
 
     componentDidMount = async () => {
 
-        await fetch(`https://api.kinopoisk.dev/v1.4/movie`, {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json', 
-                    // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
-                },
+        // await fetch(`https://api.kinopoisk.dev/v1.4/movie`, {
+        //         method: 'GET',
+        //         headers: {
+        //             accept: 'application/json', 
+        //             // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+        //         },
                 
-            })
-            .then((response) => response.json())
+        //     })
+        //     .then((response) => response.json())
             
-            .then(
-                (result) => {
-                    if (result.statusCode != 404) {
-                        this.setState({items: this.state.items.push(result)})
-                    }
-                    console.log(this.state.items)
+        //     .then(
+        //         async (result) => {
+        //             if (result.statusCode != 404) {
+        //                 this.setState({items: this.state.items.push(result)})
+        //             }
+        //         }
+        //     ) 
+        //     .catch((err) => {
+                
+        //     });
+
+        // console.log(this.state.items[0].docs)
+            
+
+        $.ajax({
+            url: `https://api.kinopoisk.dev/v1.4/movie`,
+            method: 'GET',
+            headers: {
+                accept: 'application/json', 
+                // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+            },
+
+            beforeSend: function(xhr){
+                let newContent = ``
+                newContent += `
+                    <div class="preloader">
+                            <img class="preloader__logo" id="preloader" src="preloader.svg" width="40px" height="40px"/>
+                    </div>
+                `
+
+                $('.data-container__all-films').html(newContent)
+            },
+
+            success: function (data) {
+                $('.preloader').css({
+                    display: 'none',
+                })
+
+                let newContent = ``
+                for (let id = 0; id < 10; id++) {
+                    newContent += `
+                    <div class='card' style='background: url("linear.svg") center/cover no-repeat, url("${data.docs[id].poster.previewUrl}") center/cover no-repeat'>
+                        <div class="card__text">
+                            <h2>${data.docs[id].name}</h2>
+                            <h3>${data.docs[id].type}</h3>
+                        </div>
+                    </div>
+                    `
+                    console.log(data.docs[id].poster.previewUrl)
                 }
-            ) 
-            .catch((err) => {
-                
-            })
-            
 
-            // $.ajax({
-            //     url: '../../public/index.html',
-            //     method: 'POST',
-            //     data: this.state.items[0],
-            //     success: function (data) {
-            //         console.log(data)
-            //         // data = ``
-            //         // for (let id = 0; id < 10; id++) {
-            //         //     data += `
-            //         //     <div className='card' style={{background: 'url("linear.svg") center/cover no-repeat, url("${dataFilms.docs[id].poster.previewUrl}") center/cover no-repeat'}}>
-            //         //         <div className="card__text">
-            //         //             <h2></h2>
-            //         //             <h3></h3>
-            //         //         </div>
-            //         //     </div>
-            //         //     `
-            //         // }
 
-            //         // console.log(this.state.items)
-
-            //         // $('.data-container__all-films').html(data)
-            //     }
-            // })
+                $('.data-container__all-films').html(newContent)
+            }
+        })
     
     }
+
+    handleClick = (e) => {
+        const arr = $('.data-container__buttons button').get()
+        for (let i = 0; i < 3; i++) {
+            if (arr[i].classList.contains('active')) {
+                arr[i].classList.remove('active');
+            }
+        }
+
+        console.log(e)
+        console.log(e.target)
+
+        e.target.classList.add('active');
+    }
+    
 
     render() {
         return(
             <section className='data-container'>
                 <div className="data-container__buttons">
-                    <button className="active">Все</button>
-                    <button>Фильмы</button>
-                    <button>Сериалы</button>
+                    <button className="active" id="all" onClick={this.handleClick}>Все</button>
+                    <button className='' id="films" onClick={this.handleClick}>Фильмы</button>
+                    <button className='' id="series" onClick={this.handleClick}>Сериалы</button>
                 </div>
 
                 <div className='data-container__all-films'>
-                    {
-                        this.state.items.lenght == 1 ? (
-                            <Movies items={this.state.items} />
-                        ) : <div className="preloader">
-                            <img className="preloader__logo" id="preloader" src="preloader.svg" />
-                        </div>
-                        
-                    }
-                    
                 </div>
                 
             </section>
