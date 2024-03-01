@@ -11,7 +11,8 @@ class Data extends Component {
         apiToken: '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
         isLoaded: false,
         items: [],
-        id: 666
+        series: false
+
     }
 
     componentDidMount = async () => {
@@ -45,9 +46,9 @@ class Data extends Component {
             method: 'GET',
             headers: {
                 accept: 'application/json', 
-                // 'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+                'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+                
             },
-
             beforeSend: function(xhr){
                 let newContent = ``
                 newContent += `
@@ -55,10 +56,8 @@ class Data extends Component {
                             <img class="preloader__logo" id="preloader" src="preloader.svg" width="40px" height="40px"/>
                     </div>
                 `
-
                 $('.data-container__all-films').html(newContent)
             },
-
             success: function (data) {
                 $('.preloader').css({
                     display: 'none',
@@ -74,7 +73,6 @@ class Data extends Component {
                         </div>
                     </div>
                     `
-                    console.log(data.docs[id].poster.previewUrl)
                 }
 
 
@@ -84,18 +82,65 @@ class Data extends Component {
     
     }
 
-    handleClick = (e) => {
+    handleClick = async (e) => {
         const arr = $('.data-container__buttons button').get()
         for (let i = 0; i < 3; i++) {
             if (arr[i].classList.contains('active')) {
                 arr[i].classList.remove('active');
             }
         }
-
-        console.log(e)
-        console.log(e.target)
-
+        
         e.target.classList.add('active');
+        
+        switch (e.target.id) {
+            case "all":
+                await this.setState({series: false})
+                break
+            case "films":
+                await this.setState({series: false})
+                break
+            case "series":
+                await this.setState({series: true})
+                break
+        }
+
+        await $.ajax({
+            url: `https://api.kinopoisk.dev/v1.4/movie?isSeries=${this.state.series}`,
+            method: 'GET',
+            headers: {
+                accept: 'application/json', 
+                'X-API-KEY': '01VENBA-2NPMNVM-NAVPFNN-90A8N0R',
+            },
+            beforeSend: function(xhr){
+                let newContent = ``
+                newContent += `
+                    <div class="preloader">
+                            <img class="preloader__logo" id="preloader" src="preloader.svg" width="40px" height="40px"/>
+                    </div>
+                `
+                $('.data-container__all-films').html(newContent)
+            },
+            success: function (data) {
+                $('.preloader').css({
+                    display: 'none',
+                })
+
+                let newContent = ``
+                for (let id = 0; id < 10; id++) {
+                    newContent += `
+                    <div class='card' style='background: url("linear.svg") center/cover no-repeat, url("${data.docs[id].poster.previewUrl}") center/cover no-repeat'>
+                        <div class="card__text">
+                            <h2>${data.docs[id].name}</h2>
+                            <h3>${data.docs[id].type}</h3>
+                        </div>
+                    </div>
+                    `
+                }
+
+
+                $('.data-container__all-films').html(newContent)
+            }
+        })
     }
     
 
